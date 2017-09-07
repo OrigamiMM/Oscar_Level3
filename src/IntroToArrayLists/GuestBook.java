@@ -22,11 +22,10 @@ public class GuestBook implements ActionListener {
 	public static void main(String[] args) {
 		GuestBook book = new GuestBook();
 		book.GUI();
-		book.addnames();
 
 	}
 
-	void addnames() {
+	void addname() {
 		names.add(pn);
 	}
 
@@ -38,6 +37,7 @@ public class GuestBook implements ActionListener {
 		panel.add(an);
 		panel.add(vn);
 		frame.pack();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		an.addActionListener(this);
 		vn.addActionListener(this);
 	}
@@ -47,10 +47,13 @@ public class GuestBook implements ActionListener {
 		// TODO Auto-generated method stub
 		if (e.getSource() == an) {
 			pn = JOptionPane.showInputDialog("Please Enter a Name");
+			addname(); 
 		}
-		if (e.getSource()== vn) {
-         String s = names.get(0);
-         System.out.println(s);
+		if (e.getSource() == vn) {
+			for (int i = 0; i < names.size(); i++) {
+				String s = names.get(i);
+				System.out.println("Guest #" + i + ": " + s);
+			}
 		}
 	}
 

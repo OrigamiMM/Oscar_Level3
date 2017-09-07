@@ -16,6 +16,7 @@ public class ArrayListDemo {
 		System.out.println("Here's an ArrayList of Strings:\n");
 		//iterating through list with standard for-loop
 		for(int i = 0; i < names.size(); i++){
+		//for(int i = 0; i < 2; i++){
 			String s = names.get(i);
 			System.out.println("String at element " + i + " " + s);
 		}
