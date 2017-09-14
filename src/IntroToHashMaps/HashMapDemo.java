@@ -26,7 +26,6 @@ public class HashMapDemo {
 		for(Integer i : studentRoster.keySet()){
 			System.out.println(i);
 		}
-		
 		System.out.println(Math.sqrt(3));
 	}
 }
