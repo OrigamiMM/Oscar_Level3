@@ -16,10 +16,9 @@ public class LogSearch implements ActionListener {
 	JButton entry = new JButton("Enter a name");
 	JButton search = new JButton("Search the log");
 	JButton list = new JButton("List Name");
-	String name = "";
-	int idd = 0;
-	String n = "";
-	int ii = 0;
+	JButton remove = new JButton("Remove Entry");
+	String name;
+	int idd;
 
 	public static void main(String[] args) {
 		LogSearch logz = new LogSearch();
@@ -38,10 +37,12 @@ public class LogSearch implements ActionListener {
 		pan.add(entry);
 		pan.add(search);
 		pan.add(list);
+		pan.add(remove);
 		frame.pack();
 		entry.addActionListener(this);
 		search.addActionListener(this);
 		list.addActionListener(this);
+		remove.addActionListener(this);
 	}
 
 	@Override
@@ -54,17 +55,24 @@ public class LogSearch implements ActionListener {
 			addlog();
 		}
 		if (arg0.getSource() == search) {
-
+			String idname = JOptionPane.showInputDialog("Type in the id");
+			int idnameint = Integer.parseInt(idname);
+			System.out.println("The id at " + idnameint + " is " + Logs.get(idnameint));
 		}
 		if (arg0.getSource() == list) {
-			for (int i = 0; i < Logs.size()/2; i++) {
-				for (String s : Logs.values()) {
-					n = s;
-				}
-				for (Integer j : Logs.keySet()) {
-					ii = j;
-				}
-				System.out.println(ii + " " + n);
+			for (Integer i : Logs.keySet()) {
+				System.out.println("Id: " + i + " Name: " + Logs.get(i));
+			}
+		}
+		if (arg0.getSource() == remove) {
+			String idremove = JOptionPane.showInputDialog("Type the ID you want to remove");
+			int idremoveint = Integer.parseInt(idremove);
+
+			if (Logs.containsKey(idremoveint) == Logs.isEmpty()) {
+				System.out.println("ID at " + idremove + " does not exists");
+			} else {
+				System.out.println("The ID: " + idremoveint + " Name: " + Logs.get(idremoveint) + " Has been removed");
+				Logs.remove(idremoveint);
 			}
 		}
 	}
