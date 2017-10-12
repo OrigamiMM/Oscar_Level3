@@ -23,11 +23,11 @@ public class LogSearch implements ActionListener {
 	public static void main(String[] args) {
 		LogSearch logz = new LogSearch();
 		logz.GUI();
-		logz.addlog();
 	}
 
 	void addlog() {
 		Logs.put(idd, name);
+		System.out.println("log");
 	}
 
 	void GUI() {
@@ -50,8 +50,7 @@ public class LogSearch implements ActionListener {
 		// TODO Auto-generated method stub
 		if (arg0.getSource() == entry) {
 			name = JOptionPane.showInputDialog("Please Enter a name");
-			String idz = JOptionPane.showInputDialog("Link with an id");
-			idd = Integer.parseInt(idz);
+			idd = makeId(JOptionPane.showInputDialog("Link with an id"));
 			addlog();
 		}
 		if (arg0.getSource() == search) {
@@ -75,6 +74,15 @@ public class LogSearch implements ActionListener {
 				Logs.remove(idremoveint);
 			}
 		}
+	}
+	int makeId(String g){
+		int m;
+		try{
+			m =	Integer.parseInt(g);
+		}catch(Exception e){
+			m=0;
+		}
+		return m;
 	}
 }
 /*
