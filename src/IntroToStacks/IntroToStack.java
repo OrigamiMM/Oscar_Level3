@@ -1,4 +1,4 @@
-package IntroToStacks;
+	package IntroToStacks;
 
 import java.util.Random;
 import java.util.Stack;
@@ -14,19 +14,38 @@ public class IntroToStack {
 		double dub1;
 		double dub2;
 		Random rand = new Random();
-		for (int i = 0; i < 100; i++) {
-			stack.push(rand.nextDouble()*100);
-			System.out.println(stack.pop());
+		for (int i = 0; i < 10; i++) {
+			stack.push(rand.nextDouble()*10);
+		
 		}
 		//3. Ask the user to enter in two numbers between 0 and 100, inclusive. 
-		String num1 = JOptionPane.showInputDialog("Enter any number between number 0 and 100");
-		String num2 = JOptionPane.showInputDialog("Chose a second number between 0 and 100");
+		String num1 = JOptionPane.showInputDialog("Enter any number between number 0 and 10");
+		String num2 = JOptionPane.showInputDialog("Chose a second number between 0 and 10");
 		dub1 = Double.parseDouble(num1);
 		dub2 = Double.parseDouble(num2);
 		
 		//4. Pop all the elements off of the Stack. Every time a double is popped that is
 		//   between the two numbers entered by the user, print it to the screen.
-		
+		if (dub1<dub2) {
+			for (; stack.size()>0;) {
+				double num = stack.pop();
+				if (num>dub1 && num<dub2) {
+					System.out.println("popped " + num);
+				}
+				
+			}
+			
+		}
+		if (dub1>dub2) {
+			for (; stack.size()>0;) {
+				double num = stack.pop();
+				if (num>dub2 && num<dub1) {
+					System.out.println("popped " + num);
+				}
+				
+			}
+		}
+		System.out.println(stack.size());
 		//   EXAMPLE:
 		//   NUM 1: 65
 		//   NUM 2: 75
